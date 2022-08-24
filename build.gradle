@@ -1,0 +1,50 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.2'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+    id 'groovy'
+}
+
+group = 'com.study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'
+    testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
+
+    testImplementation 'org.testcontainers:spock:1.16.3'
+    testImplementation 'org.testcontainers:localstack:1.17.1'
+
+    implementation 'io.lettuce:lettuce-core:5.2.0.RELEASE'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.3'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // AWS SDK v1
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.1000')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
+
+    // AWS SDK v2
+    implementation platform('software.amazon.awssdk:bom:2.15.0')
+    implementation 'software.amazon.awssdk:s3'
+
+    // DynamoDB
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.218'
+    implementation 'com.amazonaws:aws-java-sdk-sqs:1.12.286'
+    implementation 'com.amazonaws:aws-java-sdk-sns:1.12.286'// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.3'
+
+
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
